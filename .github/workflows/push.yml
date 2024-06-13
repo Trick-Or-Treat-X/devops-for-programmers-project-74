@@ -8,5 +8,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: docker-compose -f "docker-compose.yml" app build
-      - run: docker-compose -f "docker-compose.yml" app push
+      - run: docker-compose -f "docker-compose.yml" build app
+      - run: docker-compose -f "docker-compose.yml" push app
