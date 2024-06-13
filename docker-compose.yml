@@ -1,0 +1,24 @@
+services:
+  app:
+    image: xfuuserx1/devops-for-programmers-project-74
+    build:
+      context: ./
+      dockerfile: Dockerfile.production
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_NAME=postgres
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+  db:
+    image: postgres:14.0
+    restart: unless-stopped
+    volumes:
+      - "./data:/var/lib/postgresql/data"
+    environment:
+      - "POSTGRES_DB=postgres"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_PASSWORD=postgres"
